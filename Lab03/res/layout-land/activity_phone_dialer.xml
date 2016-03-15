@@ -149,6 +149,13 @@
                 android:layout_row="0"
                 android:src="@drawable/backspace" />
 
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_column="2"
+                android:layout_gravity="left|top"
+                android:layout_row="4"
+                android:src="@drawable/ic_launcher" />
+
         </GridLayout>
 
     </LinearLayout>

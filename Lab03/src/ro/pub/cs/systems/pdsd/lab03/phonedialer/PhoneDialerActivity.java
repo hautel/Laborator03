@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Constants;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class PhoneDialerActivity extends Activity {
@@ -96,6 +98,29 @@ public class PhoneDialerActivity extends Activity {
 					finish();
 				}
 			});
+        }
+        
+        ImageButton addContact = (ImageButton)findViewById(R.id.imageButton4);
+        if(addContact!=null){
+        	addContact.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					EditText edtxt = (EditText)findViewById(R.id.editText);
+					String phoneNumber = edtxt.getText().toString();
+					if(phoneNumber.length()>0){
+						Intent intent = new Intent("ro.pub.cs.systems.pdsd.lab04.contactsmanager.intent.action.ContactsManagerActivity");
+						intent.putExtra("ro.pub.cs.systems.pdsd.lab04.contactsmanager.PHONE_NUMBER_KEY", phoneNumber);
+						startActivityForResult(intent, 13);
+					
+					}else{
+						Toast.makeText(getApplication(), getResources().getString(R.string.phone_error), Toast.LENGTH_LONG).show();
+					}
+					
+				}
+			});
+        	
         }
     
     
